@@ -19,7 +19,7 @@ namespace Student.SharpInstructions
             switch (choice)
             {
                 case "1":
-                    // Пример IF ELSE
+                    // Пример IF ELSE Работает
                     Console.WriteLine("Введите число:");
                     int number = int.Parse(Console.ReadLine());
                     if (number > 0)
@@ -33,9 +33,10 @@ namespace Student.SharpInstructions
                     break;
 
                 case "2":
-                    // Пример WHILE
-                    int count = 0;
-                    while (count < 5)
+                    // Пример WHILE Рабоотает
+                    Console.WriteLine("Введите число:");
+                    int count = int.Parse(Console.ReadLine());
+                    while (count <= 15)
                     {
                         Console.WriteLine("Count is: " + count);
                         count++;
@@ -43,25 +44,26 @@ namespace Student.SharpInstructions
                     break;
 
                 case "3":
-                    // Пример DO WHILE
-                    int doCount = 0;
+                    // Пример DO WHILE Работает
+                    Console.WriteLine("Введите число:");
+                    int doCount = int.Parse(Console.ReadLine());
                     do
                     {
                         Console.WriteLine("Do Count is: " + doCount);
                         doCount++;
-                    } while (doCount < 5);
+                    } while (doCount <= 7);
                     break;
 
                 case "4":
-                    // Пример FOR
-                    for (int i = 0; i < 5; i++)
+                    // Пример FOR Проверить
+                    for (int i = 0; i < 12; i++)
                     {
                         Console.WriteLine("For Loop Count is: " + i);
                     }
                     break;
 
                 case "5":
-                    // Пример FOREACH
+                    // Пример FOREACH Проверить
                     string[] colors = { "Red", "Green", "Blue" };
                     foreach (string color in colors)
                     {
@@ -70,7 +72,7 @@ namespace Student.SharpInstructions
                     break;
 
                 case "6":
-                    // Пример SWITCH
+                    // Пример SWITCH присутствует ошибка 
                     Console.WriteLine("Введите номер дня (1-7):");
                     int day = int.Parse(Console.ReadLine());
                     switch (day)
