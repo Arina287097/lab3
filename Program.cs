@@ -6,107 +6,145 @@ namespace Student.SharpInstructions
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Выберите действие:");
-            Console.WriteLine("1: IF ELSE");
-            Console.WriteLine("2: WHILE");
-            Console.WriteLine("3: DO WHILE");
-            Console.WriteLine("4: FOR");
-            Console.WriteLine("5: FOREACH");
-            Console.WriteLine("6: SWITCH");
-
-            string choice = Console.ReadLine();
-
-            switch (choice)
+            while (true)
             {
-                case "1":
-                    // Пример IF ELSE Работает
-                    Console.WriteLine("Введите число:");
-                    int number = int.Parse(Console.ReadLine());
-                    if (number > 0)
-                    {
-                        Console.WriteLine("Число положительное.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Число неположительное.");
-                    }
-                    break;
+                Console.Clear();
+                Console.WriteLine("Для вызова выполняемой подпрограммы укажите ее номер и нажмите Enter:");
+                Console.WriteLine("1 - IF ELSE");
+                Console.WriteLine("2 - WHILE");
+                Console.WriteLine("3 - DO WHILE");
+                Console.WriteLine("4 - FOR");
+                Console.WriteLine("5 - FOREACH");
+                Console.WriteLine("6 - SWITCH");
 
-                case "2":
-                    // Пример WHILE Рабоотает
-                    Console.WriteLine("Введите число:");
-                    int count = int.Parse(Console.ReadLine());
-                    while (count <= 15)
-                    {
-                        Console.WriteLine("Count is: " + count);
-                        count++;
-                    }
-                    break;
+                string choice = Console.ReadLine();
+                switch (choice)
+                {
+                    case "1":
+                        ExecuteIfElse();
+                        break;
+                    case "2":
+                        ExecuteWhile();
+                        break;
+                    case "3":
+                        ExecuteDoWhile();
+                        break;
+                    case "4":
+                        ExecuteFor();
+                        break;
+                    case "5":
+                        ExecuteForeach();
+                        break;
+                    case "6":
+                        ExecuteSwitch();
+                        break;
+                    default:
+                        Console.WriteLine("Неверный выбор, попробуйте снова.");
+                        break;
+                }
+            }
+        }
 
-                case "3":
-                    // Пример DO WHILE Работает
-                    Console.WriteLine("Введите число:");
-                    int doCount = int.Parse(Console.ReadLine());
-                    do
-                    {
-                        Console.WriteLine("Do Count is: " + doCount);
-                        doCount++;
-                    } while (doCount <= 7);
-                    break;
+        static void ExecuteIfElse()
+        {
+            Console.Clear();
+            Console.WriteLine("Введите число (1 или 2): ");
+            int number = Convert.ToInt32(Console.ReadLine());
+            if (number == 1)
+                Console.WriteLine("Вы ввели 1.");
+            else if (number == 2)
+                Console.WriteLine("Вы ввели 2.");
+            else
+                Console.WriteLine("Вы ввели неверное значение.");
+            WaitToContinue();
+        }
 
-                case "4":
-                    // Пример FOR Проверить
-                    for (int i = 0; i < 12; i++)
-                    {
-                        Console.WriteLine("For Loop Count is: " + i);
-                    }
-                    break;
+        static void ExecuteWhile()
+        {
+            Console.Clear();
+            Console.WriteLine("Счетчик от 1 до 5: ");
+            int count = 1;
+            while (count <= 5)
+            {
+                Console.WriteLine(count);
+                count++;
+            }
+            WaitToContinue();
+        }
 
-                case "5":
-                    // Пример FOREACH Проверить
-                    string[] colors = { "Red", "Green", "Blue" };
-                    foreach (string color in colors)
-                    {
-                        Console.WriteLine("Color: " + color);
-                    }
-                    break;
+        static void ExecuteDoWhile()
+        {
+            Console.Clear();
+            Console.WriteLine("Введите количество повторений: ");
+            int repetitions = Convert.ToInt32(Console.ReadLine());
+            int count = 1;
+            do
+            {
+                Console.WriteLine(count);
+                count++;
+            } while (count <= repetitions);
+            WaitToContinue();
+        }
 
-                case "6":
-                    // Пример SWITCH присутствует ошибка 
-                    Console.WriteLine("Введите номер дня (1-7):");
-                    int day = int.Parse(Console.ReadLine());
-                    switch (day)
-                    {
-                        case 1:
-                            Console.WriteLine("Пн");
-                            break;
-                        case 2:
-                            Console.WriteLine("Вт");
-                            break;
-                        case 3:
-                            Console.WriteLine("Ср");
-                            break;
-                        case 4:
-                            Console.WriteLine("Чт");
-                            break;
-                        case 5:
-                            Console.WriteLine("Пт");
-                            break;
-                        case 6:
-                            Console.WriteLine("Сб");
-                            break;
-                        case 7:
-                            Console.WriteLine("Вс");
-                            break;
-                        default:
-                            Console.WriteLine("Некорректный ввод.");
-                            break;
-                    }
-                    break;
+        static void ExecuteFor()
+        {
+            Console.Clear();
+            Console.WriteLine("Для выполнения подпрограммы FOR введите начальное число и количество повторений последовательно через Enter, для возврата к списку подпрограмм нажмите Esc:");
+            Console.WriteLine("Начальное число:");
+            int start = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Количество повторений:");
+            int repeats = Convert.ToInt32(Console.ReadLine());
 
+            Console.WriteLine("Результат:");
+            for (int i = start; i < start + repeats; i++)
+            {
+                Console.WriteLine(i);
+            }
+            WaitToContinue();
+        }
+
+        static void ExecuteForeach()
+        {
+            Console.Clear();
+            string[] items = { "Первый", "Второй", "Третий" };
+            Console.WriteLine("Элементы массива:");
+            foreach (var item in items)
+            {
+                Console.WriteLine(item);
+            }
+            WaitToContinue();
+        }
+
+        static void ExecuteSwitch()
+        {
+            Console.Clear();
+            Console.WriteLine("Введите номер от 1 до 3: ");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("Вы выбрали 1.");
+                    break;
+                case 2:
+                    Console.WriteLine("Вы выбрали 2.");
+                    break;
+                case 3:
+                    Console.WriteLine("Вы выбрали 3.");
+                    break;
                 default:
-                    Console.WriteLine("Некорректный выбор.");
+                    Console.WriteLine("Неверный номер.");
                     break;
+            }
+            WaitToContinue();
+        }
+
+        static void WaitToContinue()
+        {
+            Console.WriteLine("Для повтора выполнения подпрограммы нажмите Enter, для возврата к списку подпрограмм нажмите Esc:");
+            var key = Console.ReadKey(true);
+            if (key.Key == ConsoleKey.Escape)
+            {
+                return;
             }
         }
     }
