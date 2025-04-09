@@ -4,6 +4,7 @@ namespace Student.SharpInstructions
 {
     class Program
     {
+        public static event Action OnSubProgramCompleted;
         static void Main(string[] args)
         {
             while (true)
@@ -44,34 +45,33 @@ namespace Student.SharpInstructions
                 }
             }
         }
-
+        // IF and ELSE Рботает
         static void ExecuteIfElse()
         {
             Console.Clear();
-            Console.WriteLine("Введите число (1 или 2): ");
-            int number = Convert.ToInt32(Console.ReadLine());
-            if (number == 1)
-                Console.WriteLine("Вы ввели 1.");
-            else if (number == 2)
-                Console.WriteLine("Вы ввели 2.");
+            Console.WriteLine("Введите число для проверки четности:");
+            int number = int.Parse(Console.ReadLine());
+            if (number % 2 == 0)
+                Console.WriteLine("Число четное.");
             else
-                Console.WriteLine("Вы ввели неверное значение.");
-            WaitToContinue();
+                Console.WriteLine("Число нечетное.");
+            WaitForKey();
         }
-
+        // WHILE Работает
         static void ExecuteWhile()
         {
             Console.Clear();
-            Console.WriteLine("Счетчик от 1 до 5: ");
-            int count = 1;
-            while (count <= 5)
+            Console.WriteLine("Введите положительное число для подсчета:");
+            int count = int.Parse(Console.ReadLine());
+            int i = 0;
+            while (i < count)
             {
-                Console.WriteLine(count);
-                count++;
+                Console.WriteLine(i + 1);
+                i++;
             }
-            WaitToContinue();
+            WaitForKey();
         }
-
+        // DO...WHILE Работает
         static void ExecuteDoWhile()
         {
             Console.Clear();
@@ -83,9 +83,9 @@ namespace Student.SharpInstructions
                 Console.WriteLine(count);
                 count++;
             } while (count <= repetitions);
-            WaitToContinue();
+            WaitForKey();
         }
-
+        // FOR Работает
         static void ExecuteFor()
         {
             Console.Clear();
@@ -100,21 +100,22 @@ namespace Student.SharpInstructions
             {
                 Console.WriteLine(i);
             }
-            WaitToContinue();
+            WaitForKey();
         }
-
+        // FOREACH Работает
         static void ExecuteForeach()
         {
             Console.Clear();
-            string[] items = { "Первый", "Второй", "Третий" };
-            Console.WriteLine("Элементы массива:");
-            foreach (var item in items)
+            Console.WriteLine("Введите несколько чисел, разделенных пробелом:");
+            string[] input = Console.ReadLine().Split(' ');
+            Console.WriteLine("Результат:");
+            foreach (var item in input)
             {
                 Console.WriteLine(item);
             }
-            WaitToContinue();
+            WaitForKey();
         }
-
+        //SWITCH Работает
         static void ExecuteSwitch()
         {
             Console.Clear();
@@ -123,29 +124,37 @@ namespace Student.SharpInstructions
             switch (option)
             {
                 case 1:
-                    Console.WriteLine("Вы выбрали 1.");
+                    Console.WriteLine("Вы выбрали один.");
                     break;
                 case 2:
-                    Console.WriteLine("Вы выбрали 2.");
+                    Console.WriteLine("Вы выбрали два.");
                     break;
                 case 3:
-                    Console.WriteLine("Вы выбрали 3.");
+                    Console.WriteLine("Вы выбрали три.");
                     break;
                 default:
                     Console.WriteLine("Неверный номер.");
                     break;
             }
-            WaitToContinue();
+            WaitForKey();
         }
 
-        static void WaitToContinue()
+        static void WaitForKey()
         {
-            Console.WriteLine("Для повтора выполнения подпрограммы нажмите Enter, для возврата к списку подпрограмм нажмите Esc:");
-            var key = Console.ReadKey(true);
-            if (key.Key == ConsoleKey.Escape)
+            Console.WriteLine("Нажмите Enter, чтобы повторить, или Esc, чтобы вернуться в главное меню.");
+            while (true)
             {
-                return;
+                var key = Console.ReadKey(true).Key;
+                if (key == ConsoleKey.Enter)
+                {
+                    break; // Возврат к подпрограмме
+                }
+                else if (key == ConsoleKey.Escape)
+                {
+                    Environment.Exit(0); // Возврат в главное меню или выход из программы
+                }
             }
         }
+
     }
 }
